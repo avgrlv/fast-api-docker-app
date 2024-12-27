@@ -6,8 +6,8 @@ services:
     container_name: postgres_fast_api
     environment:
       POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admon123
-      POSTGRES_DB: fast_api
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: fastapidb
       PGDATA: /var/lib/postgresql/data/pgdata
     ports:
       - "5433:5432"
@@ -37,12 +37,12 @@ services:
     restart: unless-stopped
     tty: true
     stdin_open: true
-#  app:
-#    build: .
-#    depends_on:
-#      - db
-#    ports:
-#      -"1024:1024"
+  app:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - "1024:1024"
 
 volumes:
   pgdata:
